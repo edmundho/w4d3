@@ -20,9 +20,6 @@ class Cat < ApplicationRecord
   foreign_key: :user_id,
   class_name: :User
   
-  def owner
-    user_id = current_user.id
-  end
 
   def age
     time_ago_in_words(birth_date)

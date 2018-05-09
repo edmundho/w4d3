@@ -1,6 +1,11 @@
 class User < ApplicationRecord
   before_validation :ensure_session_token
-  
+
+  has_many :requests,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: "CatRentalRequest"
+    
   has_many :cats,
   primary_key: :id,
   foreign_key: :user_id,
