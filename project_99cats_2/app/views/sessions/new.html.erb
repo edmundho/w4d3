@@ -1,5 +1,7 @@
-<form action="<%=users_url%>" method="post">
+<form action="<%=session_url%>" method="post">
   <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+
+
   <label for="username">
     Username:
     <input type="text" name="user[username]">
@@ -10,5 +12,5 @@
     <input type="password" name="user[password]">
   </label>
   
-  <input type="submit" value="Sign Up">
+  <input type="submit" value="Log in">
 </form>

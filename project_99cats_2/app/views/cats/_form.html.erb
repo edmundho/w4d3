@@ -3,13 +3,14 @@
 
 <form action="<%= action %>" method="post">
   <input type="hidden" name="_method" value="<%= method %>">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
 
   <label for="cat_name">Name</label>
   <input
     type="text"
     name="cat[name]"
     id="cat_name"
-    value="<%= cat.name %>">
+    value="">
 
   <label for="cat_birth_date">Birth date</label>
   <input
@@ -47,6 +48,7 @@
     <%= cat.sex == "F" ? "checked" : "" %>>
   <label for="cat_sex_female">Female</label>
   <br>
+  <input name="cat[user_id]" type="hidden" value="<%= current_user.id %>">
 
   <label>
     Description

@@ -1,4 +1,6 @@
 class CatRentalRequestsController < ApplicationController
+  before_action :need_to_be_owner, only: [:edit, :update]
+  
   def approve
     current_cat_rental_request.approve!
     redirect_to cat_url(current_cat)

@@ -1,5 +1,14 @@
 class User < ApplicationRecord
+  before_validation :ensure_session_token
   
+  has_many :cats,
+  primary_key: :id,
+  foreign_key: :user_id,
+  class_name: :Cat
+  
+  def ensure_session_token
+    self.session_token ||= SecureRandom.urlsafe_base64
+  end
   
   def reset_session_token!
     self.session_token = SecureRandom.urlsafe_base64
