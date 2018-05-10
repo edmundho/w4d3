@@ -8,7 +8,11 @@ class ApplicationController < ActionController::Base
   end
   
   def login(user)
-    session[:session_token] = user.reset_session_token!
+    if session[:session_token]
+      session[:session_token] = user.session_token
+    else
+      session[:session_token] = user.reset_session_token!
+    end
   end
   
   def logged_in?
